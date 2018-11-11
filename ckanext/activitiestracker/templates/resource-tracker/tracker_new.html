@@ -1,0 +1,21 @@
+<!-- {% extends "package/resource_edit_base.html" %} -->
+
+<!-- {% import 'macros/form.html' as form %}
+ -->
+{% block primary_content_inner %}
+  <!-- {% link_for _('Back to all resource log'), controller='ckanext.activitiestracker.controller:ResourceTrackerController', action='resource_tracker', dataset_id=dataset_id, resource_id=resource_id, class_='btn btn-default pull-right', icon='arrow-left' %} -->
+  <h1 class="page-heading">
+    {% block page_heading %}{{ _('Add Activities Log') }}{% endblock %}
+  </h1>
+  <!-- <a href="{{ h.url_for(controller='ckanext.activitiestracker.controller:ResourceTrackerController', action='resource_tracker_new', dataset_id=dataset_id, resource_id=res.id) }}"
+                      target="_blank"><span>DOWNLOAD</span></a> -->
+  {% block form %}
+  <form class="dataset-form add-member-form" method='post' id="add-member-form">
+    <div class="form-actions">
+        <button class="btn btn-primary" type="submit" name="submit" >
+          {{ _('Append Log') }}
+        </button>
+    </div>
+  </form>
+  {% endblock %}
+{% endblock %}
