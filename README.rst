@@ -70,7 +70,7 @@ To install ckanext-activitiestracker:
 2. Install the ckanext-activitiestracker Python package into your virtual environment::
 
      cd /usr/lib/ckan/default/src/
-     git clone https://github.com/Jiaza492/CKAN-ActivitiesTracker.git
+     git clone https://github.com/Jiaza492/ckanext-activitiestracker.git
      python setup.py install
 
 3. Add ``activitiestracker`` to the ``ckan.plugins`` setting in your CKAN
