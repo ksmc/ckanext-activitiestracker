@@ -41,6 +41,7 @@ Activities Tracker is a extension for tracking users' resource-level downloading
 This extension implemented a backend that provides a controller to let front-end developer to specify where they would like to track users' activities.
 
 For example, to track resource download within <a> element.
+
 <a class="btn btn-primary resource-url-analytics resource-type-{{ res.resource_type }}" href="{%  url_for 'get_resource_url', dataset_id=pkg.id, resource_id=res.id %}">
 <i class="fa fa-arrow-circle-o-down"></i> {{ _('Download & Log') }}
 </a>
@@ -49,9 +50,9 @@ For example, to track resource download within <a> element.
 Requirements
 ------------
 
-For example, you might want to mention here which versions of CKAN this
-extension works with.
+this extension requires ckanext-resourceauthorizer. https://github.com/etri-odp/ckanext-resourceauthorizer
 
+This extension was developed and tested under CKAN >= 2.7.3
 
 ------------
 Installation
