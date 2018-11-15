@@ -7,7 +7,8 @@ from ckan.lib.navl.dictization_functions import validate
 
 from ckanext.activitiestracker.logic.schema import resource_tracker_create_schema
 
-from ckanext.activitiestracker.model import ResourceTracker
+from ckanext.activitiestracker.model import ResourceLog
+from ckan.model import User
 
 @side_effect_free
 def resource_tracker_list(context, data_dict):
@@ -22,10 +23,10 @@ def resource_tracker_list(context, data_dict):
     limit = data_dict.get('limit')
     offset = data_dict.get('offset')
     session = context['session']
-    query = session.query(ResourceTracker)
+    query = session.query(ResourceLog)
 
     if resource_id:
-        query = query.filter(ResourceTracker.resource_id == resource_id)
+        query = query.filter(ResourceLog.resource_id == resource_id)
     if limit:
         query = query.limit(int(limit))
     if offset:
@@ -38,8 +39,9 @@ def resource_tracker_list(context, data_dict):
 def resource_tracker_create(context, data_dict):
     '''Append a new resource tracker to the list of resource log
     :param resource_id: the id of the resource
-    :param package_id: the id of the dataset package
-    :param user_id: the id of the user
+    :param event: the action which the user take 
+    :param obj_type: object type which the user action is applied to.
+    :param user_id: the username of the user
     '''
     check_access('resource_tracker_create', context, data_dict)
     
@@ -47,11 +49,22 @@ def resource_tracker_create(context, data_dict):
 
     if errors:
         raise ValidationError(errors)
-
-    tracker = ResourceTracker(
+    
+    logger = User.get(context.get('user'))
+    if logger:
+        tracker = ResourceLog(
         resource_id=data.get('resource_id'),
-        package_id=data.get('package_id'),
-        user_id=context.get('user'))
+        event=data.get('event'),
+        obj_type=data.get('obj_type'),
+        user_id=logger.name,
+        )
+    else:
+        tracker = ResourceLog(
+        resource_id=data.get('resource_id'),
+        event=data.get('event'),
+        obj_type=data.get('obj_type'),
+        user_id=None,
+        )
 
     tracker.save()
 

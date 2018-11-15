@@ -44,16 +44,10 @@ class ActivitiesTrackerPlugin(plugins.SingletonPlugin):
             action='resource_tracker',
             ckan_icon='users')
 #         m.connect(
-#             'resource_tracker_new',
-#             '/dataset/{dataset_id}/resource/{resource_id}/log_new',
+#             'get_resource_url',
+#             '/dataset/{dataset_id}/resource/{resource_id}/url',
 #             controller=
 #             'ckanext.activitiestracker.controller:ResourceTrackerController',
-#             action='resource_tracker_new')
-        m.connect(
-            'get_resource_url',
-            '/dataset/{dataset_id}/resource/{resource_id}/url',
-            controller=
-            'ckanext.activitiestracker.controller:ResourceTrackerController',
-            action='get_resource_url')
+#             action='get_resource_url')
         return m
     
