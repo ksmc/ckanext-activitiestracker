@@ -52,6 +52,8 @@ Requirements
 
 this extension requires ckanext-resourceauthorizer. https://github.com/etri-odp/ckanext-resourceauthorizer
 
+this extension requires ckanext-googleanalytics from KSMC's revision. https://github.com/ksmc/ckanext-googleanalytics
+
 This extension was developed and tested under CKAN >= 2.7.3
 
 ------------
