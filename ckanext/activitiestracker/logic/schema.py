@@ -6,5 +6,6 @@ def resource_tracker_create_schema():
         'resource_id': [resource_id_exists],
         'event':[ignore_missing],
         'obj_type':[ignore_missing],
+        
     }
     return schema

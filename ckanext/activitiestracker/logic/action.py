@@ -50,6 +50,7 @@ def resource_tracker_create(context, data_dict):
     if errors:
         raise ValidationError(errors)
     
+    
     logger = User.get(context.get('user'))
     if logger:
         tracker = ResourceLog(
