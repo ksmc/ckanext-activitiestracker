@@ -36,15 +36,15 @@ ckanext-activitiestracker
    What does it do? What features does it have?
    Consider including some screenshots or embedding a video!
 
-Activities Tracker is a extension for tracking users' resource-level downloading activities in CKAN, and store the log details in Postgres DB locally.
+Activities Tracker is a extension for tracking users' resource-level downloading activities in CKAN and deliver them to organization admin.
 
-This extension implemented a backend that provides a controller to let front-end developer to specify where they would like to track users' activities.
+This extension implemented a controller that place an intercepter in ckanext-googleanalytics extension to redirect raw browsing data into local PostgresDB.
 
-For example, to track resource download within <a> element.
+To enable this feature, install ckanext-googleanalytics from this `fork <https://github.com/Jiaza492/ckanext-googleanalytics.git>` and configure it in your ini file
 
-<a class="btn btn-primary resource-url-analytics resource-type-{{ res.resource_type }}" href="{%  url_for 'get_resource_url', dataset_id=pkg.id, resource_id=res.id %}">
-<i class="fa fa-arrow-circle-o-down"></i> {{ _('Download & Log') }}
-</a>
+::
+
+	googleanalytics.activities_tracker = true
 
 ------------
 Requirements
