@@ -19,9 +19,9 @@ class ResourceLog(DomainObject):
 
 resource_log_table = Table('resource_log',metadata,
     Column('id', types.UnicodeText, primary_key=True, default=make_uuid),
-    Column('obj_type', types.UnicodeText),
-    Column('event', types.UnicodeText),
-    Column('resource_id', types.UnicodeText),
+    Column('ea', types.UnicodeText),
+    Column('ec', types.UnicodeText),
+    Column('el', types.UnicodeText),
     Column('user_id', types.UnicodeText),
     Column('created', types.DateTime, default=datetime.datetime.utcnow),
 )

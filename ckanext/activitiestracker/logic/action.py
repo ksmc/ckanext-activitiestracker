@@ -13,20 +13,20 @@ from ckan.model import User
 @side_effect_free
 def resource_tracker_list(context, data_dict):
     '''Return the list of trackers for a particular resource
-    :param resource_id: the id of the resource
+    :param el: the id of the resource
     :param limit: the number of returning results
     :param offset: the offset to start returning results from
     '''
     check_access('resource_tracker_list', context, data_dict)
     
-    resource_id = data_dict.get('resource_id')
+    el = data_dict.get('el')
     limit = data_dict.get('limit')
     offset = data_dict.get('offset')
     session = context['session']
     query = session.query(ResourceLog)
 
     if resource_id:
-        query = query.filter(ResourceLog.resource_id == resource_id)
+        query = query.filter(ResourceLog.el == el)
     if limit:
         query = query.limit(int(limit))
     if offset:
@@ -38,9 +38,9 @@ def resource_tracker_list(context, data_dict):
 
 def resource_tracker_create(context, data_dict):
     '''Append a new resource tracker to the list of resource log
-    :param resource_id: the id of the resource
-    :param event: the action which the user take 
-    :param obj_type: object type which the user action is applied to.
+    :param el: the id of the resource
+    :param ec: the action which the user take 
+    :param ea: object type which the user action is applied to.
     :param user_id: the username of the user
     '''
     check_access('resource_tracker_create', context, data_dict)
@@ -54,16 +54,16 @@ def resource_tracker_create(context, data_dict):
     logger = User.get(context.get('user'))
     if logger:
         tracker = ResourceLog(
-        resource_id=data.get('resource_id'),
-        event=data.get('event'),
-        obj_type=data.get('obj_type'),
+        el=data.get('el'),
+        ec=data.get('ec'),
+        ea=data.get('ea'),
         user_id=logger.name,
         )
     else:
         tracker = ResourceLog(
-        resource_id=data.get('resource_id'),
-        event=data.get('event'),
-        obj_type=data.get('obj_type'),
+        el=data.get('el'),
+        ec=data.get('ec'),
+        ea=data.get('ea'),
         user_id=None,
         )
 

@@ -17,7 +17,7 @@ class ResourceTrackerController(BaseController):
             c.pkg_dict = get_action('package_show')(None, {'id': dataset_id})
             c.resource = get_action('resource_show')(None, {'id': resource_id})
             rec = get_action('resource_tracker_list')(None, {
-                'resource_id': resource_id,
+                'el': resource_id,
                 'limit': 0
             })
         except NotAuthorized:

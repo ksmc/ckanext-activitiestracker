@@ -14,12 +14,12 @@ from ckan.logic.auth.update import resource_update as ckan_resource_update
 def resource_tracker_create(context, data_dict):
     '''Authorization check for creating a log for a resource
     '''
-    resource_id = data_dict.get('resource_id')
+    resource_id = data_dict.get('el')
     resourceObj = get_resource_object(context, {'id': resource_id})
     return auth.resource_show(context, {'id': resourceObj.id})
 
 def resource_tracker_list(context, data_dict):
     '''Authorization check for getting a list of log for a resource
     '''
-    resource_id = data_dict.get('resource_id')
+    resource_id = data_dict.get('el')
     return ckan_resource_update(context, {'id': resource_id})

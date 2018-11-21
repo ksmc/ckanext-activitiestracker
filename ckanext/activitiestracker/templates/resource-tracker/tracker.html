@@ -7,18 +7,16 @@
   <table class="table table-header table-hover table-bordered" id="member-table">
     <thead>
       <tr>
-        <!-- <th>{{ _('Package Id') }}</th>
-        <th>{{ _('Resource Id') }}</th> -->
         <th>{{ _('User Id') }}</th>
+        <th>{{ _('Action') }}</th>
         <th>{{ _('TimeStamp') }}</th>
       </tr>
     </thead>
     <tbody>
       {% for log in logs %}
       <tr>
-        <!-- <td>{{ log.package_id }}</td>
-        <td>{{ log.resource_id }}</td> -->
         <td>{{ log.user_id }}</td>
+        <td>{{ log.ea }}</td>
         <td>{{ log.created }}</td>
       </tr>
       {% endfor %}
