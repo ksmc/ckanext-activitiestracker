@@ -25,7 +25,7 @@ def resource_tracker_list(context, data_dict):
     session = context['session']
     query = session.query(ResourceLog)
 
-    if resource_id:
+    if el:
         query = query.filter(ResourceLog.el == el)
     if limit:
         query = query.limit(int(limit))

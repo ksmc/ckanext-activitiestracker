@@ -10,7 +10,7 @@ class ActivitiesTrackerCommand(CkanCommand):
     '''Activities tracker commands
     Usage:
       activitiestracker init-db
-        - Create the resource_tracker table in the database
+        - Create the resource_log table in the database
     '''
 
     summary = __doc__.split('\n')[0]
